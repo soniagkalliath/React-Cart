@@ -12,28 +12,38 @@ function Cart({cartSummary,setCartSummary}) {
 
   return (
     <div className='container my-5 p-5'>
-        <div className="d-flex justify-content-between">
-            <h1>Shopping Cart</h1>
-            <h5 className='fw-bolder'>{cartSummary?.length} Items</h5>
-        </div>
-        <table className="my-5 table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Title</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>...</th>
-                </tr>
-            </thead>
-            <tbody>
-                <CartItem cartSummary={cartSummary} setCartSummary={setCartSummary}/>
-            </tbody>
-        </table>
-        <div className="d-flex justify-content-between">
-            <Link to={'/'}><i className="fa-solid fa-arrow-left"></i> Back to Shop</Link>
-            <h5 className='fw-bolder'>TOTAL PRICE : $ {cartTotal}</h5>
-        </div>
+        {
+            cartSummary?.length>0 ?
+            <>
+                <div className="d-flex justify-content-between">
+                    <h1>Shopping Cart</h1>
+                    <h5 className='fw-bolder'>{cartSummary?.length} Items</h5>
+                </div>
+                <table className="my-5 table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <CartItem cartSummary={cartSummary} setCartSummary={setCartSummary}/>
+                    </tbody>
+                </table>
+                <div className="d-flex justify-content-between">
+                    <Link to={'/'}><i className="fa-solid fa-arrow-left"></i> Back to Shop</Link>
+                    <h5 className='fw-bolder'>TOTAL PRICE : $ {cartTotal}</h5>
+                </div>
+            </>
+            :
+            <div className='d-flex justify-content-center align-items-center flex-column'>
+                <h1>Your Cart is Empty</h1>
+                <Link to={'/'} className='btn btn-success'>Click Here to Purchase!!!</Link>
+            </div>
+        }
     </div>
   )
 }

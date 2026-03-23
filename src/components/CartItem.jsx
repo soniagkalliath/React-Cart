@@ -40,8 +40,7 @@ function CartItem({cartSummary,setCartSummary}) {
   return (
     <>
       {
-        cartSummary?.length>0 ?
-          cartSummary?.map(product=>(
+        cartSummary?.map(product=>(
             <tr key={product?.id}>
               <td><img width={'70px'} height={'70px'} src={product?.image} alt="image" /></td>
               <td>{product?.title}</td>
@@ -56,8 +55,6 @@ function CartItem({cartSummary,setCartSummary}) {
               <td> <button onClick={()=>removeCartItem(product.id)} className="btn fw-bolder text-danger">X</button> </td>
             </tr>
           ))
-        :
-        <div>Your Cart is Empty!!!</div>
       }
     </>
   )
